@@ -487,7 +487,7 @@ views/homepage.ejs -
             </body>
             </html>
 
-## Setting up Blogging App  
+## Lec 29 - Setting up Blogging App  
 
 - npm init  
 - npm i express  
@@ -547,7 +547,7 @@ app.listen(PORT,`Server started at PORT: ${PORT}`),
 - models -> user.js -> schema , password hashing using salt  
 - routes -> user.js -> get('/signup'), get('/signin'), post('/signin'), post('/signup')  
 
-## Adding Authentication to blogging App  
+## Lec 30 - Adding Authentication to blogging App  
 
 - npm i jsonwebtoken  
 - npm i cookie-parser
@@ -767,7 +767,7 @@ Note don't forget to add `enctype="multipart/form-data"` in form in addBlog.ejs
 - home.ejs -  
 changes made in path view button of blogs  
 
-## Remaining part of Blogging App  
+## Lec 31 - Remaining part of Blogging App  
 
 - created a dynamic route in blog.js -
 
@@ -824,7 +824,7 @@ adding comments
 // issue - Anushka Murade (hard coded) in navbar <!-- Name should be dynamic in navbar -->  
 // user profile image upload is not handled  
 
-## Deploying Blog App  
+## Lec 32 - Deploying Blog App  
 
 - for deployment purpose use env variable  
 -> index.js -  
@@ -868,7 +868,7 @@ at the top import dotenv
 make free acc  
 select region mumbai to reduce the latency  
 search for beanstalk in the website  
-
+Note-`this deployment part is incomplete`
 <!-- 9:43 -->
 
 ## Lec 33 - Socket.io  
