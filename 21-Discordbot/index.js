@@ -23,9 +23,9 @@ client.on("messageCreate",(message)=>{
     })
 });
 
-client.login(
-    "MTI1MjI4MzE1NTEwMDk5NTcxNw.G6qYVS.nP5VAongNXCz8d9M-3S42IBd94MgkZ14c5DEUE"
-);
+// client.login(
+//     
+// );
 
 client.on('interactionCreate',interaction=>{
     console.log(interaction);
