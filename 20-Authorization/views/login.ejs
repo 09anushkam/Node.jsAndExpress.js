@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .loginform {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* background-color:rgb(173, 224, 225); */
+        }
+
+        .loginform h1 {
+            margin-top: 150px;
+        }
+
+        .loginelem {
+            margin: 20px;
+        }
+
+        .loginelem input {
+            width: 12rem;
+            border: none;
+            background-color: rgb(217, 246, 235);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .loginelem button {
+            border: none;
+            color: white;
+            margin-left: 120px;
+            background-color: royalblue;
+            padding: 10px 40px;
+            border-radius: 10px;
+        }
+        .loginelem button:hover{
+            cursor: pointer;
+        }
+    </style>
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="loginform">
+        <h1>login</h1>
+        <form action="/user/login" method="post">
+            <div class="loginelem">
+                <label>Email</label>
+                <input type="email" required name="email">
+            </div>
+            <div class="loginelem">
+                <label>Password</label>
+                <input type="password" required name="password">
+            </div>
+            <div class="loginelem">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

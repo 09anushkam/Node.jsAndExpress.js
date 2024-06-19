@@ -1,0 +1,5 @@
+
+ 1718389524550 : ::1 : GET : /api/users
+ 1718389590472 : ::1 : GET : /api/users/
+ 1718389706905 : ::1 : POST : /api/users/
+ 1718389842873 : ::1 : DELETE : /api/users/666c8bca78b0af6f4d3d37b7

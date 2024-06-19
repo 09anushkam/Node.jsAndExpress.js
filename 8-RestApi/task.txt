@@ -1,0 +1,19 @@
+REST API - JSON  
+
+HYBRID SERVER :-  
+/api/users -return json (alexa and something like that can get data from here)  
+/users - else html data will be returned (browser can get data from here)  
+
+GET /users - HTML Document Render - Done  
+GET /api/users - List all users - Done  
+
+DYNAMIC PATH PARAMETERS :-  
+GET /api/users/:id -> :id - variable
+GET /api/users/1 - Get the user with id 1 - Done  
+GET /api/users/2 - Get the user with id 2 - Done  
+
+POST /api/users - Create new user  
+
+PATCH /api/users/1 - Edit the user with id 1  
+
+DELETE /api/users/1 - Delete the user with id 1  
