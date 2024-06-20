@@ -33,11 +33,11 @@ console.log(addFn(5,2));
 
 ## Lec 5 - File Handling / fs module  
 
-For synchronous functions -  
+For synchronous functions (blocking nature) -  
 fs.function('filename.extension',"text");  
 <!-- read request has one more parameter "utf-8" for encoding instead of text -->  
 
-For asynchronous functions -  
+For asynchronous functions (non-blocking nature : more preferable) -  
 fs.function('filename.extension',"text",callback);  
 
 ## Lec 6 - How Nodejs Works  
