@@ -16,20 +16,21 @@ npm is package manager
 
 -> math.js  
 
-function add(a,b){return a+b}  
-function sub(a,b){return a-b}  
-module.exports=add;
-module.exports=sub; <!-- Overwrites add function -->  
-module.exports={  
-    addFn:add,  
-    subFn:subtract  
-}  
+        function add(a,b){return a+b}  
+        function sub(a,b){return a-b}  
+        module.exports=add;
+        module.exports=sub; <!-- Overwrites add function -->  
+        module.exports={  
+            addFn:add,  
+            subFn:subtract  
+        }  
 
 -> hello.js  
-const math = require('./math');  
-console.log(math.addFn(5,2));  
-const {addFn,subFn} = require('./math');  <!-- destructing function to use directly -->
-console.log(addFn(5,2));  
+
+    const math = require('./math');  
+    console.log(math.addFn(5,2));  
+    const {addFn,subFn} = require('./math');  <!-- destructing function to use directly -->
+    console.log(addFn(5,2));  
 
 ## Lec 5 - File Handling / fs module  
 
@@ -56,14 +57,14 @@ console.log(os.cpus().length);
 
 `npm init`  
 <!-- Creating a server -->  
-const http=require('http');  
+    const http=require('http');  
 
-const myServer=http.createServer((req,res)=>{  
-    console.log("New Request received");  
-    res.end("Hello from Server");  
-});  
+    const myServer=http.createServer((req,res)=>{  
+        console.log("New Request received");  
+        res.end("Hello from Server");  
+    });  
 
-myServer.listen(8000,()=>console.log("Server Started!"));  
+    myServer.listen(8000,()=>console.log("Server Started!"));  
 
 <!-- To run server -->
 `npm start`  
@@ -76,16 +77,16 @@ URL contains - path,nested path,query parameters
 
 `npm i url`  
 
-const http=require('http');  
-const url=require('url');  
-const myServer=http.createServer((req,res)=>{  
+    const http=require('http');  
+    const url=require('url');  
+    const myServer=http.createServer((req,res)=>{  
 
     const myUrl=url.parse(req.url,true);  
     console.log(myUrl);  
 
     const username=myUrl.query.myname;  
-    res.end(`hi,${username}`);  
-});  
+        res.end(`hi,${username}`);  
+    });  
 
 myServer.listen(8000,()=>console.log("Server Started!"));  
 
@@ -102,19 +103,19 @@ DELETE - deleting account
 Express js helps in keeping code clean and organized  
 `npm i express`  
 
-const express=require('express');  
-const app=express(); //creating app or server  
+    const express=require('express');  
+    const app=express(); //creating app or server  
 
-// app.method(path,handler);  
+    // app.method(path,handler);  
 
-app.get('/',(req,res)=>{  
-    return res.send("Hello from Home Page");  
-});  
-app.get('/about',(req,res)=>{  
-    return res.send(`Hello ${req.query.name}`);  
-});  
+    app.get('/',(req,res)=>{  
+        return res.send("Hello from Home Page");  
+    });  
+    app.get('/about',(req,res)=>{  
+        return res.send(`Hello ${req.query.name}`);  
+    });  
 
-app.listen(8000,()=>console.log("Server Started!"));  
+    app.listen(8000,()=>console.log("Server Started!"));  
 
 ## Lec 11 - Versioning  
 
@@ -157,61 +158,62 @@ POST /api/users - Create new user
 PATCH /api/users/1 - Edit the user with id 1  
 DELETE /api/users/1 - Delete the user with id 1  
 
-app  
-.routes('')  
-.method1(callback)  
-.method2(callback)  
+    app  
+    .routes('')  
+    .method1(callback)  
+    .method2(callback)  
 
 eg :  
-app  
-.route('/api/users/:id')  
-.get((req,res)=>{  
-    const id=Number(req.params.id);  
-    const user=users.find(user=>user.id===id);  
-    return res.json(user);  
-})  
-.patch((req,res)=>{  
-    // TO DO : Edit the user with id  
-    return res.json({status:'pending'});  
-})  
-.delete((req,res)=>{  
-    // TO DO : Delete the user with id  
-    return res.json({status:'pending'});  
-});  
+
+    app  
+    .route('/api/users/:id')  
+    .get((req,res)=>{  
+        const id=Number(req.params.id);  
+        const user=users.find(user=>user.id===id);  
+        return res.json(user);  
+    })  
+    .patch((req,res)=>{  
+        // TO DO : Edit the user with id  
+        return res.json({status:'pending'});  
+    })  
+    .delete((req,res)=>{  
+        // TO DO : Delete the user with id  
+        return res.json({status:'pending'});  
+    });  
 
 ## Lec 14 - Rest Api using Postman / Rest Api - 2  
 
-// Middleware - Plugin  
-app.use(express.urlencoded({extended: false})); // adds data in req.body sent by post request  
+    // Middleware - Plugin  
+    app.use(express.urlencoded({extended: false})); // adds data in req.body sent by post request  
 
-// post  
-app  
-.routes('/api/users')  
-.post((req,res)=>{  
-    // Create new user  
-    const body=req.body;  
-    // console.log("Body",body);  
-    users.push({...body, id:users.length+1});  
-    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{  
-        return res.json({status:'success',id:users.length});  
+    // post  
+    app  
+    .routes('/api/users')  
+    .post((req,res)=>{  
+        // Create new user  
+        const body=req.body;  
+        // console.log("Body",body);  
+        users.push({...body, id:users.length+1});  
+        fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{  
+            return res.json({status:'success',id:users.length});  
+        });  
     });  
-});  
 
 ## Lec 15 - Express Middlewares  
 
-app.use((req,res,next)=>{  
-    console.log("Hello from middleware 1");  
-    // return res.json({msg:"Hello from middleware 1"});  
-    next(); //go to next middleware or routes  
-});  
+    app.use((req,res,next)=>{  
+        console.log("Hello from middleware 1");  
+        // return res.json({msg:"Hello from middleware 1"});  
+        next(); //go to next middleware or routes  
+    });  
 
 ## Lec 16 - HTTP Header  
 
 http headers represent the meta data  
 associated with the API request and response  
 
-// Always add X to custom headers  
-res.setHeader("X-myName","Anushka Murade");  
+    // Always add X to custom headers  
+    res.setHeader("X-myName","Anushka Murade");  
 
 ## Lec 17 - HTTP status codes  
 
@@ -256,74 +258,74 @@ res.setHeader("X-myName","Anushka Murade");
 
 `npm i mongoose` - helps in connecting mongodb with nodejs  
 
-const mongoose=require('mongoose');  
+    const mongoose=require('mongoose');  
 
-// Connection  
-mongoose.connect("mongodb://localhost:27017/mongotut")  
-.then(()=>console.log("Mongodb Connected!"))  
-.catch((error)=>console.log("Mongodb connection error",error));  
+    // Connection  
+    mongoose.connect("mongodb://localhost:27017/mongotut")  
+    .then(()=>console.log("Mongodb Connected!"))  
+    .catch((error)=>console.log("Mongodb connection error",error));  
 
-// Schema  
-const userSchema=new mongoose.Schema({  
-    firstName:{  
-        type:String,  
-        required:true,  
-    },  
-    lastName:{  
-        type:String,  
-    },  
-    email:{  
-        type:String,  
-        required:true,  
-        unique:true,  
-    },  
-    jobTitle:{  
-        type:String,  
-    },  
-    gender:{  
-        type:String,  
-    },  
-});  
-
-// User model  
-const User=mongoose.model('user',userSchema);  
-
-app  
-.route('/api/users')  
-.get(async(req,res)=>{  
-    const alldbUsers=await User.find({});  
-    return res.json(alldbUsers);  
-})  
-.post(async(req,res)=>{  
-    const body=req.body;  
-    if(!body || !body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title){  
-        return req.status(400).json({msg:"All fields are required"});  
-    }  
-    const result=await User.create({  
-        firstName:body.first_name,  
-        lastName:body.last_name,  
-        email:body.email,  
-        gender:body.gender,  
-        jobTitle:body.job_title,  
+    // Schema  
+    const userSchema=new mongoose.Schema({  
+        firstName:{  
+            type:String,  
+            required:true,  
+        },  
+        lastName:{  
+            type:String,  
+        },  
+        email:{  
+            type:String,  
+            required:true,  
+            unique:true,  
+        },  
+        jobTitle:{  
+            type:String,  
+        },  
+        gender:{  
+            type:String,  
+        },  
     });  
-    return res.status(201).json({msg:"success"});  
-});  
 
-app  
-.route('/api/users/:id')  
-.get(async(req,res)=>{  
-    const user=await User.findById(req.params.id);  
-    if(!user) return res.status(404).json({error:"user not found"});  
-    return res.json(user);  
-})  
-.patch(async(req,res)=>{  
-    await User.findByIdAndUpdate(req.params.id,{lastName:"Changed"});  
-    return res.status(200).json({status:'changed successfully'});  
-})  
-.delete(async(req,res)=>{  
-    await User.findByIdAndDelete(req.params.id)  
-    return res.json({status:'deleted successfully'});  
-});  
+    // User model  
+    const User=mongoose.model('user',userSchema);  
+
+    app  
+    .route('/api/users')  
+    .get(async(req,res)=>{  
+        const alldbUsers=await User.find({});  
+        return res.json(alldbUsers);  
+    })  
+    .post(async(req,res)=>{  
+        const body=req.body;  
+        if(!body || !body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title){  
+            return req.status(400).json({msg:"All fields are required"});  
+        }  
+        const result=await User.create({  
+            firstName:body.first_name,  
+            lastName:body.last_name,  
+            email:body.email,  
+            gender:body.gender,  
+            jobTitle:body.job_title,  
+        });  
+        return res.status(201).json({msg:"success"});  
+    });  
+
+    app  
+    .route('/api/users/:id')  
+    .get(async(req,res)=>{  
+        const user=await User.findById(req.params.id);  
+        if(!user) return res.status(404).json({error:"user not found"});  
+        return res.json(user);  
+    })  
+    .patch(async(req,res)=>{  
+        await User.findByIdAndUpdate(req.params.id,{lastName:"Changed"});  
+        return res.status(200).json({status:'changed successfully'});  
+    })  
+    .delete(async(req,res)=>{  
+        await User.findByIdAndDelete(req.params.id)  
+        return res.json({status:'deleted successfully'});  
+    });  
 
 ## Lec 20 - MVC Pattern  
 
@@ -350,16 +352,16 @@ npm i ejs
 
 make dir views and inside of that home.ejs file
 
-const URL=require('./models/url');
-app.set('view engine',"ejs");  
-app.set('views',path.resolve("./views"));  
+    const URL=require('./models/url');
+    app.set('view engine',"ejs");  
+    app.set('views',path.resolve("./views"));  
 
-app.get("/",async(req,res)=>{  
-    const allUrls=await URL.find({});  
-    return res.render('home',{  
-        urls: allUrls,  
+    app.get("/",async(req,res)=>{  
+        const allUrls=await URL.find({});  
+        return res.render('home',{  
+            urls: allUrls,  
+        });  
     });  
-});  
 
 `locals.user - locals takes data of user from backend in frontend`  
 
