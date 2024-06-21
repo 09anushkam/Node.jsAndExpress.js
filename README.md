@@ -88,7 +88,7 @@ URL contains - path,nested path,query parameters
         res.end(`hi,${username}`);  
     });  
 
-        myServer.listen(8000,()=>console.log("Server Started!"));  
+    myServer.listen(8000,()=>console.log("Server Started!"));  
 
 ## Lec 9 - HTTP Methods  
 
